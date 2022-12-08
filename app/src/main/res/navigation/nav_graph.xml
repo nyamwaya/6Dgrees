@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/SignUpFragment"
+        android:name="com.app.a6dgrees.presentation.authentication.SignUpFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_signup">
+
+        <action
+            android:id="@+id/action_SignUpFragment_to_FragmentOtp"
+            app:destination="@id/FragmentOtp" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/FragmentHome"
+        android:name="com.app.a6dgrees.presentation.authentication.HomeFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_home">
+    </fragment>
+
+    <fragment
+        android:id="@+id/FragmentLogin"
+        android:name="com.app.a6dgrees.presentation.authentication.LoginFragment"
+        android:label="@string/fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_FragmentLogin_to_SignUpFragment"
+            app:destination="@id/SignUpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/FragmentOtp"
+        android:name="com.app.a6dgrees.presentation.authentication.OtpFragment"
+        android:label="@string/fragment_otp"
+        tools:layout="@layout/fragment_otp">
+        <action
+            android:id="@+id/action_FragmentOtp_to_FragmentHome"
+            app:destination="@id/FragmentHome" />
+    </fragment>
+
+</navigation>

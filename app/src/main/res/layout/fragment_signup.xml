@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/first_name"
+        style="@style/TextLayoutInput"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="@dimen/margin46"
+        android:background="@null"
+        android:hint="@string/placeholder_holder_name"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/first_name_text_input"
+            style="@style/EditTextStyle"
+            android:text="Nyamwaya"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/first_name_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/first_name_error"
+        android:textColor="@color/red_60"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/first_name"
+        app:layout_constraintTop_toBottomOf="@+id/first_name" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/last_name"
+        style="@style/TextLayoutInput"
+        android:layout_marginHorizontal="16dp"
+        android:background="@null"
+        android:hint="@string/placeholder_last_name"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintStart_toStartOf="@+id/first_name"
+        app:layout_constraintTop_toBottomOf="@+id/first_name" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/last_name_text_input"
+            style="@style/EditTextStyle"
+            android:text="Alex"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/last_name_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/last_name_error"
+        android:textColor="@color/red_60"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/last_name"
+        app:layout_constraintTop_toBottomOf="@+id/last_name" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email"
+        style="@style/TextLayoutInput"
+        android:layout_marginHorizontal="16dp"
+        android:background="@null"
+        android:hint="@string/placeholder_email"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/last_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_text_input"
+            style="@style/EditTextStyle"
+            android:text="nyamwayaa@gmail.com"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phone"
+        style="@style/TextLayoutInput"
+        android:layout_marginHorizontal="16dp"
+        android:background="@null"
+        android:hint="@string/placeholder_phone"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phone_text_input"
+            style="@style/EditTextStyle"
+            android:text="0727288103"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password"
+        style="@style/TextLayoutInput"
+        android:layout_marginHorizontal="16dp"
+        android:background="@null"
+        android:hint="@string/placeholder_holder_password"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_text_input"
+            style="@style/EditTextStyle"
+            android:text="Poopman23@"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirm_password"
+        style="@style/TextLayoutInput"
+        android:layout_marginHorizontal="16dp"
+        android:background="@null"
+        android:hint="@string/placeholder_confirm_password"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirm_password_text_input"
+            style="@style/EditTextStyle"
+            android:text="Poopman23@"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/show_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin37"
+        android:layout_marginEnd="@dimen/margin28"
+        android:background="@color/light_100"
+        android:src="@drawable/show"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/terms_and_conditions_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin16"
+        android:buttonTint="@color/violet_100"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+
+    <TextView
+        android:id="@+id/legal_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin8"
+        android:fontFamily="@font/inter_500_medium"
+        android:text="@string/sign_up_legal_warning"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/terms_and_conditions_checkbox"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_signup"
+        style="@style/ButtonLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin16"
+        android:layout_marginTop="@dimen/margin27"
+        android:text="@string/signup"
+        app:layout_constraintTop_toBottomOf="@+id/legal_warning" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/btn_signup"
+        app:layout_constraintEnd_toEndOf="@+id/btn_signup"
+        app:layout_constraintTop_toTopOf="@+id/btn_signup"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_signup"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin19"
+        android:fontFamily="@font/inter_500_medium"
+        android:gravity="center_vertical"
+        android:text="@string/already_have"
+        android:textColor="@color/light_20"
+        android:textSize="@dimen/textSize16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signup" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

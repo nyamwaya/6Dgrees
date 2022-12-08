@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.authentication.OtpFragment">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/verification_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/textSize16"
+        android:layout_marginBottom="@dimen/margin53"
+        android:fontFamily="@font/inter_500_medium"
+        android:text="@string/enter_code"
+        android:textColor="@color/dark_100"
+        android:textSize="@dimen/textSize36"
+        app:layout_constraintBottom_toTopOf="@+id/pin_entry_edit"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <com.app.a6dgrees.presentation.PinEntryEditText
+        android:id="@+id/pin_entry_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin16"
+        android:layout_marginBottom="@dimen/margin56"
+        android:cursorVisible="true"
+        android:digits="1234567890"
+        android:focusable="true"
+        android:imeOptions="actionSend"
+        android:inputType="number|numberPassword"
+        android:longClickable="false"
+        android:maxLength="4"
+        android:textAlignment="textStart"
+        android:textColor="@color/light_80"
+        android:textIsSelectable="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/conde_sent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_goneMarginStart="@dimen/margin16" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/textSize16"
+        android:layout_marginBottom="@dimen/margin16"
+        android:fontFamily="@font/inter_600_semibold"
+        android:text="@string/placeholder_timer"
+        android:textColor="@color/violet_100"
+        android:textSize="@dimen/textSize18"
+        app:layout_constraintBottom_toTopOf="@+id/conde_sent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/conde_sent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/textSize16"
+        android:layout_marginBottom="@dimen/margin16"
+        android:fontFamily="@font/inter_500_medium"
+        android:text="@string/code_sent"
+        android:textAlignment="viewStart"
+        android:textColor="@color/dark_25"
+        android:textSize="@dimen/textSize16"
+        app:layout_constraintBottom_toTopOf="@+id/resend_code"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/resend_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin46"
+        android:fontFamily="@font/inter_500_medium"
+        android:text="@string/resend_code"
+        android:textColor="@color/violet_100"
+        android:textSize="@dimen/textSize16"
+        app:layout_constraintBottom_toTopOf="@+id/btn_authenticate_otp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_authenticate_otp"
+        android:layout_marginHorizontal="@dimen/textSize16"
+        style="@style/ButtonLarge"
+        android:text="@string/verify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin32"
+
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
