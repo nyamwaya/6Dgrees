@@ -1,6 +1,6 @@
 ## Steps to get the app working
 
-[x] Step 1. On android end, create auth and validate it
+ [ x ] Step 1. On android end, create auth and validate it
 Step 2. Integrate instagram api
 Step 3. Integrate the internal API
 Step 4. pick a database provider and host it on a free cloud
