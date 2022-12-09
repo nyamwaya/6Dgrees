@@ -7,12 +7,12 @@ interface StytchApi {
     // Create a user with password
     @POST("passwords")
     suspend fun signUp(
-        @Body requestBody: AuthRequest
+        @Body requestBody: LoginRequest
     ): CreateUserWithPasswordResponseDto
 
     @POST("passwords/authenticate")
     suspend fun login(
-        @Body requestBody: AuthRequest
+        @Body requestBody: LoginRequest
     ) : LoginResponseDto
 
     @PUT("users/{userId}")

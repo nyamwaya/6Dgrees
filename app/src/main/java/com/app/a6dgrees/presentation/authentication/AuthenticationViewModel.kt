@@ -5,13 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.app.a6dgrees.common.Constants.emailRegex
 import com.app.a6dgrees.common.Constants.firstNameRegex
 import com.app.a6dgrees.common.Constants.lastNameRegex
+import com.app.a6dgrees.common.Constants.loginPasswordRegex
 import com.app.a6dgrees.common.Constants.passwordRegex
 import com.app.a6dgrees.common.Constants.phoneNumberRegex
 import com.app.a6dgrees.common.Resource
 import com.app.a6dgrees.common.SixDegreesPreferences
 import com.app.a6dgrees.data.remote.dto.*
 import com.app.a6dgrees.domain.models.FormData
+import com.app.a6dgrees.domain.models.LoginFormData
 import com.app.a6dgrees.domain.use_cases.authenticate_otp.AuthenticateOtpUseCase
+import com.app.a6dgrees.domain.use_cases.login.LoginUseCase
 import com.app.a6dgrees.domain.use_cases.send_otp.SendOtpUseCase
 import com.app.a6dgrees.domain.use_cases.signup.SignUpUseCase
 import com.app.a6dgrees.domain.use_cases.update_user.UpdateUserUseCase
@@ -66,11 +69,12 @@ class AuthenticationViewModel @Inject constructor(
         )
     }
 
+    //create it's own sealed class the returns and error when form data is failed
     fun processFormData(data: FormData) {
         val validationResults = validateFormData(data)
         if (validationResults.all { it.value }) {
             signUpUser(
-                AuthRequest(
+                LoginRequest(
                     email = data.email,
                     password = data.password
                 )
@@ -84,7 +88,7 @@ class AuthenticationViewModel @Inject constructor(
     }
 
     private fun signUpUser(
-        createUserRequest: AuthRequest,
+        createUserRequest: LoginRequest,
     ) {
         signUpUseCase(createUserRequest).onEach { result ->
             _createUserState.value = result
@@ -108,6 +112,8 @@ class AuthenticationViewModel @Inject constructor(
             _authenticateOtpState.value = result
         }.launchIn(viewModelScope)
     }
+
+
 
 
 }

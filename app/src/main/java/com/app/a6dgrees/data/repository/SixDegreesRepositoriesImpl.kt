@@ -9,7 +9,7 @@ class SixDegreesRepositoriesImpl @Inject constructor(
     private val api: StytchApi
 ) : SixDegreesRepository {
 
-    override suspend fun createUserWithPassword(requestBody: AuthRequest): CreateUserWithPasswordResponseDto {
+    override suspend fun createUserWithPassword(requestBody: LoginRequest): CreateUserWithPasswordResponseDto {
         return api.signUp(requestBody)
     }
 
@@ -28,7 +28,7 @@ class SixDegreesRepositoriesImpl @Inject constructor(
         return api.authenticateOtp(requestBody)
     }
 
-    override suspend fun login(requestBody: AuthRequest): LoginResponseDto {
+    override suspend fun login(requestBody: LoginRequest): LoginResponseDto {
         return api.login(requestBody)
     }
 

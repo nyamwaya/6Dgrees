@@ -12,9 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.app.a6dgrees.R
-import com.app.a6dgrees.common.fromJson
 import com.app.a6dgrees.databinding.ActivityMainBinding
-import com.app.a6dgrees.domain.models.UserModel
 import com.app.a6dgrees.presentation.authentication.AuthenticationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,33 +30,29 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
 
-        val userModel = if (viewModel.mSharedPrefs.getUserModel().isNullOrEmpty()) null else fromJson(viewModel.mSharedPrefs.getUserModel().toString())
-        navigateToOtp(userModel)
-
+        navigation()
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
 
-    private fun navigateToOtp(userModel: UserModel?) {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
+    private fun navigation() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         val inflater = navHostFragment.navController.navInflater
         val navGraph = inflater.inflate(R.navigation.nav_graph)
         val navController = navHostFragment.navController
 
-        val destination = if (userModel == null) {
-            //this means the user user deleted app or its first time installing
+        val destination = if (viewModel.mSharedPrefs.getUserId().isNullOrEmpty()) {
             R.id.FragmentLogin
-        } else if (!userModel.isPhoneNumberVerified) {
-            // user has an account but has verified their number, we need the user to do this
-            R.id.FragmentOtp
-        } else {
-            // user has created account, has verified their number, so lets take them to the home fragment
+        } else if (viewModel.mSharedPrefs.getIsUserPhoneVerified()) {
             R.id.FragmentHome
+        } else {
+            R.id.FragmentOtp
         }
 
         navGraph.setStartDestination(destination)

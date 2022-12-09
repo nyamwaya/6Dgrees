@@ -1,7 +1,7 @@
 package com.app.a6dgrees.domain.use_cases.login
 
 import com.app.a6dgrees.common.Resource
-import com.app.a6dgrees.data.remote.dto.AuthRequest
+import com.app.a6dgrees.data.remote.dto.LoginRequest
 import com.app.a6dgrees.data.remote.dto.LoginResponseDto
 import com.app.a6dgrees.domain.SixDegreesRepository
 import kotlinx.coroutines.flow.flow
@@ -12,7 +12,7 @@ import javax.inject.Inject
 class LoginUseCase @Inject constructor(
     private val repository: SixDegreesRepository
 ) {
-    operator fun invoke(requestBody: AuthRequest): kotlinx.coroutines.flow.Flow<Resource<LoginResponseDto>> =
+    operator fun invoke(requestBody: LoginRequest): kotlinx.coroutines.flow.Flow<Resource<LoginResponseDto>> =
         flow {
             try {
                 emit(Resource.Loading())

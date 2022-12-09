@@ -13,7 +13,6 @@ import com.app.a6dgrees.R
 import com.app.a6dgrees.common.Resource
 import com.app.a6dgrees.common.showSnackBar
 import com.app.a6dgrees.data.remote.dto.AuthenticateOtpRequest
-import com.app.a6dgrees.data.remote.dto.PhoneOtp
 import com.app.a6dgrees.databinding.FragmentOtpBinding
 import com.app.a6dgrees.presentation.BaseFragment
 import com.google.android.material.snackbar.Snackbar
@@ -21,7 +20,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.time.ExperimentalTime
 
 
 class OtpFragment : BaseFragment() {
@@ -46,38 +44,52 @@ class OtpFragment : BaseFragment() {
         setupViews()
     }
 
-
     override fun onClick() {
         binding.btnAuthenticateOtp.setOnClickListener {
-            val otpCode = binding.pinEntryEdit.text.toString().trim()
-            if (binding.pinEntryEdit.text.toString().isEmpty() ) {
-                showSnackBar("Please Enter you OTP or request one", binding.root, Snackbar.LENGTH_LONG)
-            } else if(binding.pinEntryEdit.text?.length!! < 4) {
-               showSnackBar("please enter your full OTP", binding.root, Snackbar.LENGTH_LONG)
-            } else if (mPhoneID == null) {
-                showSnackBar("Please wait while we send the OTP", binding.root, Snackbar.LENGTH_LONG)
+            viewModel.mSharedPrefs.setIsUserPhoneVerified(true)
 
-            } else {
-                viewModel.authenticateOtp(
-                    AuthenticateOtpRequest(
-                        methodId = mPhoneID,
-                        otpCode = otpCode
+            val isUserVerified = viewModel.mSharedPrefs.getIsUserPhoneVerified()
+            if (!isUserVerified) {
+                val otpCode = binding.pinEntryEdit.text.toString().trim()
+                if (binding.pinEntryEdit.text.toString().isEmpty()) {
+                    showSnackBar(
+                        "Please Enter you OTP or request one",
+                        binding.root,
+                        Snackbar.LENGTH_LONG
                     )
-                )
+                } else if (binding.pinEntryEdit.text?.length!! < 4) {
+                    showSnackBar("please enter your full OTP", binding.root, Snackbar.LENGTH_LONG)
+                } else if (mPhoneID == null) {
+                    showSnackBar(
+                        "Please wait while we send the OTP",
+                        binding.root,
+                        Snackbar.LENGTH_LONG
+                    )
+
+                } else {
+                    viewModel.authenticateOtp(
+                        AuthenticateOtpRequest(
+                            methodId = mPhoneID,
+                            otpCode = otpCode
+                        )
+                    )
+                }
             }
-        }
-
-        binding.resendCode.setOnClickListener {
-            viewModel.sendOtp(
-                PhoneOtp(
-                    phone_number = "+10000000000"
-                )
-            )
-            // start timer
-            setTimer()
-            showSnackBar("New Code Requested", binding.root, Snackbar.LENGTH_LONG)
 
         }
+
+//        binding.resendCode.setOnClickListener {
+//            viewModel.mSharedPrefs.setIsUserPhoneVerified(true)
+//
+//            viewModel.sendOtp(
+//                PhoneOtp(
+//                    phone_number = "+10000000000"
+//                )
+//            )
+//            setTimer()
+//            showSnackBar("New Code Requested", binding.root, Snackbar.LENGTH_LONG)
+//
+//        }
     }
 
     override fun observables() {
@@ -123,8 +135,10 @@ class OtpFragment : BaseFragment() {
     }
 
     private fun setTimer() {
+        binding.resendCode.isClickable = false
         val timer = object : CountDownTimer(120000, 1000) {
             override fun onFinish() {
+                binding.resendCode.isClickable = true
                 binding.timer.setTextColor(resources.getColor(R.color.red_100))
                 showSnackBar("Time ran out, request a new code", binding.root, Snackbar.LENGTH_LONG)
             }
@@ -139,7 +153,6 @@ class OtpFragment : BaseFragment() {
                 binding.timer.text = formatted
             }
         }
-        timer.cancel()
         timer.start()
     }
 

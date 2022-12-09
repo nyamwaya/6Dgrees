@@ -8,6 +8,8 @@ object Constants {
     //Shared Prefs
     const val SHARED_PREFS_NAME = "six-degrees-prefs"
     const val PREFS_USER_MODEL = "user_id"
+    const val PREFS_IS_USER_PHONE_VERIFIED = "isUserPhoneVerified"
+    const val PREFS_USER_ID = "userID"
     const val HAS_SEEN_ONBOARDING = "has_seen_onboarding"
     const val IS_EMAIL_VERIFIED = "is_email_verified"
 
@@ -18,6 +20,8 @@ object Constants {
     val passwordRegex = Regex("""^(?=.*[\d])(?=.*[\W]).{8,}$""")
    // val cleanedPhoneNumber = Regex("""^[\d\s()+-]+${'$'}""")
     val emailRegex = Regex("""^[^@\s]+@[^@\s]+\.[^@\s]+${'$'}""")
+
+    val loginPasswordRegex = Regex("""^(?=.*[A-Za-z])(?=.*\d)(?=.*[@${'$'}!%*#?&])[A-Za-z\d@${'$'}!%*#?&]{8,}${'$'}""")
 
 
 }

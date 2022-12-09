@@ -1,6 +1,7 @@
 package com.app.a6dgrees.common
 
 import android.view.View
+import androidx.navigation.NavController
 import com.app.a6dgrees.domain.models.UserModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
@@ -17,14 +18,13 @@ fun toJson(userModel: UserModel): String {
     return Gson().toJson(userModel)
 }
 
-fun isEmailValid(toString: String): Boolean {
-    return true
-}
-
-fun isNameValid(): Boolean {
-    return true
-}
-
-fun isPasswordValid() {
-
+fun navigateAndPopBackStack(
+    navController: NavController,
+    action: Int,
+    fragmentLogin: Int
+) {
+    navController.apply {
+        this.navigate(action)
+        this.popBackStack(fragmentLogin, true)
+    }
 }

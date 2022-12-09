@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import com.app.a6dgrees.databinding.FragmentHomeBinding
+import com.app.a6dgrees.presentation.BaseFragment
+import android.provider.ContactsContract
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -19,15 +21,32 @@ class HomeFragment : Fragment() {
     ): View {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        setToolbar()
         return binding.root
 
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpViews()
+    }
 
-        binding.buttonSecond.setOnClickListener {
-        }
+    override fun onClick() {
+    }
+
+    override fun observables() {
+    }
+
+    private fun setUpViews() {
+        setToolbar()
+    }
+
+    private fun setToolbar() {
+        // Get a reference to the ActionBar
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.title = "Home"
+
     }
 
     override fun onDestroyView() {
